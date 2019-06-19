@@ -1,0 +1,89 @@
+#: import random random
+#: import math math
+<ScatterTextWidget>:
+    BoxLayout:
+        orientation : 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_4
+                text: 'D4'
+                font_size : 50
+            Button:
+                id: rand_4_button
+                text: 'Roll'
+                on_press: rand_4_result.text = str(math.ceil(random.random()*4))
+            Label:
+                id: rand_4_result
+                text: ''
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_6
+                text: 'D6'
+                font_size : 50
+            Button:
+                id: rand_6_button
+                text: 'Roll'
+                on_press: rand_6_result.text = str(math.ceil(random.random()*6))
+            Label:
+                id: rand_6_result
+                text: ''
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_8
+                text: 'D8'
+                font_size : 50
+            Button:
+                id: rand_8_button
+                text: 'Roll'
+                on_press: rand_8_result.text = str(math.ceil(random.random()*8))
+            Label:
+                id: rand_8_result
+                text: ''
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_10
+                text: 'D10'
+                font_size : 50
+            Button:
+                id: rand_10_button
+                text: 'Roll'
+                on_press: rand_10_result.text = str(math.ceil(random.random()*10))
+            Label:
+                id: rand_10_result
+                text: ''
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_12
+                text: 'D12'
+                font_size : 50
+            Button:
+                id: rand_12_button
+                text: 'Roll'
+                on_press: rand_12_result.text = str(math.ceil(random.random()*12))
+            Label:
+                id: rand_12_result
+                text: ''
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: rand_20
+                text: 'D20'
+                font_size : 50
+            Button:
+                id: rand_20_button
+                text: 'Roll'
+                on_press: rand_20_result.text = str(math.ceil(random.random()*20))
+            Label:
+                id: rand_20_result
+                text: ''
