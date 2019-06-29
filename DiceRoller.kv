@@ -1,89 +1,303 @@
 #: import random random
 #: import math math
+
+#: set colour_background_bars  [29/255,29/255,29/255,1]
+#colour of background grey bars
+
+#: set button_colour_active [186/255,108/255,245/255,255/255]
+#colour of buttons when not pressed
+
+#: set button_colour_pressed [205/255,205/255,205/255,255/255]
+#colour of buttons when pressed
+
+#: set border_var [1 for i in range(4)]
+#This does weird things to the ellipseness of the rounded rectangle just ignore it if it looks okish otherwise change from 0-15 range.
+
+#: set text_size 0.5
+#gives ratio of text size to boxlayout enclosing it
+
+#: set image_ratio_to_button 0.5
+#ratio of image of shuffle thing to button
+
+#: set gap_between_bars 0.25
+#ratio of gap between bars to size of bars.
+
+#: set gap_from_button_to_bar 0.05
+#ratio of gap from button to bar to size of bar
+
+#: set padding_top_bottom 50
+#padding between top of screen to first bar and same on bottom.
+
+
 <ScatterTextWidget>:
     BoxLayout:
         orientation : 'vertical'
+        spacing : rand_4.size[1]*gap_between_bars
+        padding : [0,padding_top_bottom]
+
+
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
+
             Label:
                 id: rand_4
                 text: 'D4'
-                font_size : 50
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
             Button:
                 id: rand_4_button
-                text: 'Roll'
                 on_press: rand_4_result.text = str(math.ceil(random.random()*4))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
+
+
+
             Label:
                 id: rand_4_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
+
 
 
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
+
             Label:
                 id: rand_6
                 text: 'D6'
-                font_size : 50
+                font_size :  self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
             Button:
                 id: rand_6_button
-                text: 'Roll'
                 on_press: rand_6_result.text = str(math.ceil(random.random()*6))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
+
+
+
+
             Label:
                 id: rand_6_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
+
 
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
             Label:
                 id: rand_8
                 text: 'D8'
-                font_size : 50
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
+
             Button:
                 id: rand_8_button
-                text: 'Roll'
                 on_press: rand_8_result.text = str(math.ceil(random.random()*8))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
+
             Label:
                 id: rand_8_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
 
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
             Label:
                 id: rand_10
                 text: 'D10'
-                font_size : 50
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
             Button:
                 id: rand_10_button
-                text: 'Roll'
                 on_press: rand_10_result.text = str(math.ceil(random.random()*10))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
             Label:
                 id: rand_10_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
 
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
             Label:
                 id: rand_12
                 text: 'D12'
-                font_size : 50
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
             Button:
                 id: rand_12_button
-                text: 'Roll'
                 on_press: rand_12_result.text = str(math.ceil(random.random()*12))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
+
             Label:
                 id: rand_12_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
 
         BoxLayout:
             orientation: 'horizontal'
+            padding : 0, self.size[1]*gap_from_button_to_bar
+
+            canvas:
+                Color:
+                    rgba: colour_background_bars
+                Rectangle:
+                    size : self.size[0], self.size[1]
+                    pos : self.pos[0], self.pos[1]
             Label:
                 id: rand_20
                 text: 'D20'
-                font_size : 50
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-thinitalic'
             Button:
                 id: rand_20_button
-                text: 'Roll'
                 on_press: rand_20_result.text = str(math.ceil(random.random()*20))
+                background_color : 0,0,0,0
+                size_hint_x: None
+                width: self.height
+                border: border_var
+
+                canvas.before:
+                    Color:
+                        rgba: button_colour_active if self.state=='normal' else button_colour_pressed
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50,]
+
+                Image:
+                    source: 'baseline_shuffle_white_48dp.png'
+                    pos: self.parent.center_x-(self.width/2), self.parent.center_y-(self.height/2)
+                    height: self.parent.height * image_ratio_to_button
+                    width: self.parent.width * image_ratio_to_button
             Label:
                 id: rand_20_result
                 text: ''
+                font_size : self.size[1]*text_size
+                font_name : 'roboto-bold'
