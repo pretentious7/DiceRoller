@@ -25,6 +25,8 @@ class ScatterTextWidget(BoxLayout):
 class DiceRollerApp(App):
     def build(self):
         LabelBase.register(name='roboto-thinitalic', fn_regular='Roboto-ThinItalic.ttf')
+        LabelBase.register(name='roboto-bold', fn_regular='Roboto-Bold.ttf')
+
 
         return ScatterTextWidget()
 
