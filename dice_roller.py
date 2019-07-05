@@ -1,7 +1,7 @@
 from kivy.app import App
 
 from kivmob import KivMob, TestIds
-
+from kivy.core.text import LabelBase
 
 from kivy.uix.scatter import Scatter
 from kivy.uix.label import Label
@@ -24,6 +24,8 @@ class ScatterTextWidget(BoxLayout):
 
 class DiceRollerApp(App):
     def build(self):
+        LabelBase.register(name='roboto-thinitalic', fn_regular='Roboto-ThinItalic.ttf')
+
         return ScatterTextWidget()
 
 if __name__ == "__main__":
